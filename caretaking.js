@@ -1,0 +1,1 @@
+//mohammad og daniel sitt territorie
