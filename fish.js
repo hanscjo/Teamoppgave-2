@@ -2,12 +2,20 @@
 //kristian var her
 
 function evolve() {
+    let errorMessage;
 
+    if (experience >= nextLevel) {
+        errorMessage = '';
+    }
+    else {
+        errorMessage = 'Du trenger ' + nextLevel + ' experience for å utvikle fisken.';
+    }
+    document.getElementById('errorMessage').innerHTML = errorMessage;
 }
 
 function evaluate() {
     const avg = (hunger + hygiene + sleep + love)/4;
-    experience += avg;
+    experience += avg * experienceRate;
 
     if (avg > 80) {
         moodState = 0;
@@ -29,4 +37,5 @@ function evaluate() {
     }
     
     document.getElementById('mood').src = moodGifs[moodState];
+    document.getElementById('experiencePoints').innerHTML = experience;
 }
