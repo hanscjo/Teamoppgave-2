@@ -5,7 +5,7 @@ let love = 100;
 
 let experience = 0;
 
-const moodGifs = ["https://cdn.pixabay.com/photo/2020/12/27/20/24/smile-5865208_1280.png",
+const moodGifs = ['https://cdn.pixabay.com/photo/2020/12/27/20/24/smile-5865208_1280.png',
 'https://images.emojiterra.com/google/android-11/512px/263a.png',
 'https://www.pngitem.com/pimgs/m/50-500914_neutral-emoji-png-transparent-background-neutral-emoji-png.png',
 'http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/frowning-face.png',
