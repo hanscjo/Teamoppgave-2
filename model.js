@@ -11,7 +11,8 @@ let evolveState = 0;
 
 let moodState = 0;
 
-const moodGifs = ['img/mood/fiskglad1.1(bilde1)mbakgrunn.png',
+const moodGifs = ['img/mood/fiskglad1.1(bilde1)mbakgrunn.png', 
+'img/mood/fiskmediumglad1(bilde2)mbakgrunn',
 'img/mood/fiskbekymret1(bilde3)mbakgrunn.png',
 'img/mood/fisk kjempe trist1(bilde5)mbakgrunn.png',
 'img/mood/fisksint1(bilde6)mbakgrunn.png',
