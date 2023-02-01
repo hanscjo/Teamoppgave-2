@@ -3,14 +3,24 @@
 
 function evolve() {
     let errorMessage;
+    
 
     if (experience >= nextLevel) {
         errorMessage = '';
+        evolveState++ ;
+        nextLevel =  nextLevel * 2.5;
+        document.getElementById('evolve').src = fishGifs[evolveState];
+
+
     }
     else {
         errorMessage = 'Du trenger ' + nextLevel + ' experience for å utvikle fisken.';
     }
     document.getElementById('errorMessage').innerHTML = errorMessage;
+
+    if (evolveState == 3){
+        document.getElementById('evolveknapp').style.visibility = "hidden";
+    }  
 }
 
 function evaluate() {
