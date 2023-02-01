@@ -1,59 +1,39 @@
-let hunger = 100;
-let hygiene = 100;
-let sleep = 100;
-let love = 100;
-let imgName = null;
 
-const imgSrc = ["https://cdn.pixabay.com/photo/2020/12/27/20/24/smile-5865208_1280.png",
-'https://images.emojiterra.com/google/android-11/512px/263a.png',
-'https://www.pngitem.com/pimgs/m/50-500914_neutral-emoji-png-transparent-background-neutral-emoji-png.png',
-'http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/frowning-face.png',
-'https://media.tenor.com/gMC-purKMQ4AAAAM/sad-cry.gif'];
-        
-updateView();
-function updateView(){
-    if (sleep >= 80 && hunger >= 80 && hygiene >= 80 && love >= 80 ) imgName = imgSrc[0];
-    else if (sleep >= 60 && hunger >= 60 && hygiene >= 60 && love >= 60 ) imgName = imgSrc[1];
-    else if (sleep >= 40 && hunger >= 40 && hygiene >= 40 && love >= 40 ) imgName = imgSrc[2];
-    else if (sleep >= 20 && hunger >= 20 && hygiene >= 20 && love >= 20 ) imgName = imgSrc[3];
-    else if (sleep >= 0 && hunger >= 0 && hygiene >= 0 && love >= 0 ) imgName = imgSrc[4];
-           
-document.getElementById('app').innerHTML = /*html*/ `
-    <h1>Fisk-tamagotchi</h1>
-    <img height="200px" width="200px" id="humør" alt="humør" src="${imgName}" /> <br/>
+var sleep = document.getElementById('sleep');
+var hunger = document.getElementById('hunger');
+var hygiene = document.getElementById('hygiene');
+var love = document.getElementById('love');
+const imgSrc = ["img/fiskglad1.1(bilde1).png",
+'img/fiskmediumglad1(bilde2).png',
+'img/fisktrist1(bilde4).png',
+'img/fisk kjempe trist1(bilde5).png',
+'img/fiskdod1(bilde7).png'];
+let imgName = document.getElementById('image');
 
-    Sleep   : <progress id="sleep" value="${sleep}" min="0" max="100">Leke</progress>
-    <button onclick="add('sleep')">Soothe the fish</button><br/>
+setImageSource();
 
-    Hunger  : <progress id="hunger" value="${hunger}" min="0" max="100">Hungry</progress>
-    <button onclick="add('hunger')">Feed</button> <br/>
-
-    Hygiene : <progress id="hygiene" value="${hygiene}" min="0" max="100">Hungry</progress>
-    <button onclick="add('hygiene')">Wash</button> <br/>
-
-    Love    : <progress id="love" value="${love}" min="0" max="100">Love</progress>
-    <button onclick="add('love')">Give attention</button> <br/>
-    `;        
-}
-
-        
-//Decreases automatically the values of sleep, hunger, hygeiene, love. 
 setInterval( function() {
-    sleep = Math.max(0, sleep - 5);
-    hunger = Math.max(0, hunger - 5);
-    hygiene = Math.max(0, hygiene - 5);
-    love = Math.max(0, love - 5);
-    updateView();
+    sleep.value -= 5;
+    hunger.value -= 5;
+    hygiene.value -= 5;
+    love.value -= 5;
+    
+    setImageSource();
+    return [sleep.value, hunger.value, hygiene.value, love.value];
 }, 1000 );
-
-       
-//Increases the values of sleep, hunger, hygeiene, love on click.
-function add(s) {
-    if (s == 'sleep') sleep = Math.min(sleep + 10, 100);
-    if (s == 'hunger') hunger = Math.min(hunger + 10, 100);
-    if (s == 'hygiene') hygiene = Math.min(hygiene + 10, 100);
-    if (s == 'love') love = Math.min(love + 10, 100);
-        
-    updateView();
-
+    
+function changeValue(a){
+    if (a.value <100) {
+        setImageSource();
+        return a.value += 10;
+                
+    }
+}
+    
+function setImageSource() {
+    if (sleep.value >= 80 && hunger.value >= 80 && hygiene.value >= 80 && love.value >= 80 ) imgName.src = imgSrc[0];
+    else if (sleep.value >= 60 && hunger.value >= 60 && hygiene.value >= 60 && love.value >= 60 ) imgName.src = imgSrc[1];
+    else if (sleep.value >= 40 && hunger.value >= 40 && hygiene.value >= 40 && love.value >= 40 ) imgName.src = imgSrc[2];
+    else if (sleep.value >= 20 && hunger.value >= 20 && hygiene.value >= 20 && love.value >= 20 ) imgName.src = imgSrc[3];
+    else if (sleep.value >= 0 && hunger.value >= 0 && hygiene.value >= 0 && love.value >= 0 ) imgName.src = imgSrc[4];
 }
