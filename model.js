@@ -1,7 +1,7 @@
-let hunger = 100;
-let hygiene = 100;
-let sleep = 100;
-let love = 100;
+// let hunger = 100;
+// let hygiene = 100;
+// let sleep = 100;
+// let love = 100;
 
 let experience = 0;
 let experienceRate = 0.25;

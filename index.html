@@ -7,12 +7,25 @@
 </head>
 <body>
     <h1>Joel the fish</h1>
-    <h3>Mood:</h3>
-    <img id="mood" height="305" width="220" alt="mood">
-    <p>Hunger: 100% <button onclick="feed()">Feed</button></p>
-    <p>Hygiene: 100% <button onclick="clean()">Clean</button></p>
-    <p>Sleep: 100% <button onclick="rest()">Rest</button></p>
-    <p>Love: 100% <button onclick="pet()">Pet</button></p>
+
+    <div id="app"> 
+        <h3>Mood</h3>
+
+        <img id="image" alt="altImage" src=""style="max-width: 25%;"/><br>
+
+        Sleep: <progress value="100" max="100" id="sleep"></progress>
+        <button onclick="changeValue(sleep)">Sleep</button><br/>
+
+        Hunger: <progress value="100" max="100" id="hunger"></progress>
+        <button onclick="changeValue(hunger)">Hunger</button><br/>
+
+        Hygiene: <progress value="100" max="100" id="hygiene"></progress>
+        <button onclick="changeValue(hygiene)">Hygiene</button><br/>
+
+        Love: <progress value="100" max="100" id="love"></progress>
+        <button onclick="changeValue(love)">Love</button><br/>
+
+   </div>
     <br>
     <br>
     <img id="evolve" alt="fish">
