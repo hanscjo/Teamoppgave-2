@@ -8,14 +8,14 @@
 <body>
     <h1>Joel the fish</h1>
     <h3>Mood:</h3>
-    <img height="305" width="220" src="img/mood/fiskglad1.1(bilde1)mbakgrunn.png" alt="mood">
+    <img id="mood" height="305" width="220" alt="mood">
     <p>Hunger: 100% <button onclick="feed()">Feed</button></p>
     <p>Hygiene: 100% <button onclick="clean()">Clean</button></p>
     <p>Sleep: 100% <button onclick="rest()">Rest</button></p>
     <p>Love: 100% <button onclick="pet()">Pet</button></p>
     <br>
     <br>
-    <img src="img/evolution/fiskevolve1(bilde1)mbakgrunn.png" alt="fish">
+    <img id="evolve" alt="fish">
     <h2>Experience: 0</h2>
     <br>
     <button onclick="evolve()">Evolve</button>
@@ -25,3 +25,7 @@
 <script src="model.js"></script>
 <script src="caretaking.js"></script>
 <script src="fish.js"></script>
+<script>
+    document.getElementById("mood").src = moodGifs[moodState];
+    document.getElementById("evolve").src = fishGifs[evolveState];
+</script>
