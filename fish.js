@@ -24,7 +24,7 @@ function evolve() {
 }
 
 function evaluate() {
-    const avg = (hunger + hygiene + sleep + love)/4;
+    const avg = (hunger.value + hygiene.value + sleep.value + love.value)/4;
     experience += avg * experienceRate;
 
     if (avg > 80) {

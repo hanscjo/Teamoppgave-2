@@ -1,7 +1,7 @@
-// let hunger = 100;
-// let hygiene = 100;
-// let sleep = 100;
-// let love = 100;
+var sleep = document.getElementById('sleep');
+var hunger = document.getElementById('hunger');
+var hygiene = document.getElementById('hygiene');
+var love = document.getElementById('love');
 
 let experience = 0;
 let experienceRate = 0.25;
