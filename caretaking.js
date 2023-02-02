@@ -1,5 +1,5 @@
 
-function decreaseValues() {
+function decreaseValues() { //max-funksjonene passer på at vi aldri går mindre enn 0
    
     sleep = Math.max(0, sleep - 5);
     hunger = Math.max(0, hunger - 5);
@@ -10,12 +10,12 @@ function decreaseValues() {
 }
 
 function changeValue(a){
-    if (document.getElementById(a).value < 100 && errorMessage != 'Joel har dødd!') {
+    if (errorMessage != 'Joel har dødd!') { //Så lenge fisken er i live
         if (a == 'sleep') sleep = Math.min(sleep + 10, 100);
         if (a == 'hunger') hunger = Math.min(hunger + 10, 100);
         if (a == 'hygiene') hygiene = Math.min(hygiene + 10, 100);
         if (a == 'love') love = Math.min(love + 10, 100);
-    }
+    } //Passer på at vi aldri overskrider 100, som med funksjonen over
     view();
 }
     

@@ -4,25 +4,26 @@
 function evolve() {
     if (experience >= nextLevel) {
         errorMessage = '';
-        evolveState++ ;
+        evolveState++ ; //øker utviklingsstadiet med 1
         nextLevel =  nextLevel * 2.5;
-        evolveImg = fishGifs[evolveState];
+        evolveImg = fishGifs[evolveState]; //henter bilde utifra utviklingsstadie
         experienceRate += 0.1;
     }
     else {
         errorMessage = 'Du trenger ' + nextLevel + ' experience for å utvikle fisken.';
     }
 
-    if (evolveState == 3){
+    if (evolveState == 3){ //Siste utviklingsstadie
         evolveBtnStyle = 'visibility: hidden';
-    }  
+    } 
+    view();
 }
 
 function evaluate() {
-    const avg = (hunger + hygiene + sleep + love)/4;
-    experience += avg * experienceRate;
+    const avg = (hunger + hygiene + sleep + love)/4; //Sjekker "magefølelsen"
+    experience += avg * experienceRate; //belønner at du tar godt vare på Joel
 
-    if (avg > 80) {
+    if (avg > 80) { //sjekker magefølelsen
         moodState = 0;
     }
     else if (avg > 60) {
@@ -37,18 +38,18 @@ function evaluate() {
     else if (avg > 0) {
         moodState = 4;
     }
-    else {
+    else { //avg == 0, fisken er død
         moodState = 5;
         clearInterval(decreasing);
         clearInterval(evaluating);
         errorMessage = 'Joel har dødd!';
     }
     
-    moodImg = moodGifs[moodState];
+    moodImg = moodGifs[moodState]; //oppdaterer bildepath til det som korresponderer til humøret
     view(); 
 }
 
-function reset() {
+function reset() { //Nullstiller alt til model
     sleep = 100;
     hunger = 100;
     hygiene = 100;

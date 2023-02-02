@@ -1,3 +1,4 @@
+//Å kjøre dette som script førte til krøll mht intervals. Håper det finnes en god løsning slik at vi kan unngå å ha en stor model foran viewet.
 var sleep = 100;
 var hunger = 100;
 var hygiene = 100;

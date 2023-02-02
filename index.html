@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app"> 
+    <div id="app"></div>
         
 </body>
     
@@ -43,7 +43,7 @@
 
     let evolveImg = 'img/evolution/fiskevolve1(bilde1)mbakgrunn.png';
 
-    const fishGifs = ['img/evolution/fiskevolve1(bilde1)mbakgrunn.png',
+    const fishGifs = ['img\evolution\fiskevolve1(bilde1)mbakgrunn.png',
     'img/evolution/fiskevolve2(bilde2)mbakgrunn.png',
     'img/evolution/fiskevolve3(bilde3)mbakgrunn.png',
     'img/evolution/fiskevolve4(bilde4)mbakgrunn.png'];
@@ -62,28 +62,28 @@
         <img id="mood" alt="altImage" src="${moodImg}" width="221px" height="306px"/><br><br>
 
         Sleep: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<progress value="${sleep}" max="100" id="sleep"></progress>
-        <button onclick="changeValue('sleep')">Sleep</button><br/><br>
+        <button onclick="changeValue('sleep')">Soothe the fish</button><br/><br>
 
         Hunger: &nbsp;&nbsp;&nbsp;<progress value="${hunger}" max="100" id="hunger"></progress>
-        <button onclick="changeValue('hunger')">Hunger</button><br/><br>
+        <button onclick="changeValue('hunger')">Feed the fish</button><br/><br>
 
         Hygiene: &nbsp;<progress value="${hygiene}" max="100" id="hygiene"></progress>
-        <button onclick="changeValue('hygiene')">Hygiene</button><br/><br>
+        <button onclick="changeValue('hygiene')">Wash the fish</button><br/><br>
 
         Love: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<progress value="${love}" max="100" id="love"></progress>
-        <button onclick="changeValue('love')">Love</button><br/><br>
+        <button onclick="changeValue('love')">Pet the fish</button><br/><br>
 
         </div>
         <br>
         <h3>Level:</h3>
         <img id="evolve" src="${evolveImg}" alt="fish">
-        <h2>Experience: ${experience}</span></h2>
+        <h2>Experience: ${experience}</h2>
         <br>
         <button id="evolveknapp" style="${evolveBtnStyle}" onclick="evolve()">Evolve</button>
         <div id="errorMessage">${errorMessage}</div>`;
 
-        errorMessage == 'Joel har dødd!' ?
-        html += `<div><button onclick="reset()">Start på nytt?</button></div>` : 
+        errorMessage == 'Joel har dødd!' ? 
+        html += `<div><button onclick="reset()">Start på nytt?</button></div>` : //restartknapp dersom Joel har dødd
         html += ``;
 
         document.getElementById("app").innerHTML = html;
