@@ -1,12 +1,13 @@
-var sleep = document.getElementById('sleep');
-var hunger = document.getElementById('hunger');
-var hygiene = document.getElementById('hygiene');
-var love = document.getElementById('love');
+var sleep = 100;
+var hunger = 100;
+var hygiene = 100;
+var love = 100;
 
 let experience = 0;
 let experienceRate = 0.25;
 let nextLevel = 1000;
 let evolveState = 0;
+
 
 
 

@@ -6,41 +6,89 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Joel the fish</h1>
-
     <div id="app"> 
-        <h3>Mood</h3>
-
-        <img id="mood" alt="altImage" src="" width="221px" height="306px"/><br>
-
-        Sleep: <progress value="100" max="100" id="sleep"></progress>
-        <button onclick="changeValue(sleep)">Sleep</button><br/>
-
-        Hunger: <progress value="100" max="100" id="hunger"></progress>
-        <button onclick="changeValue(hunger)">Hunger</button><br/>
-
-        Hygiene: <progress value="100" max="100" id="hygiene"></progress>
-        <button onclick="changeValue(hygiene)">Hygiene</button><br/>
-
-        Love: <progress value="100" max="100" id="love"></progress>
-        <button onclick="changeValue(love)">Love</button><br/>
-
-   </div>
-    <br>
-    <br>
-    <img id="evolve" alt="fish">
-    <h2>Experience: <span id="experiencePoints">0</span></h2>
-    <br>
-    <button id="evolveknapp"onclick="evolve()">Evolve</button>
-    <div id="errorMessage"></div>
+        
 </body>
     
 </html>
-<script src="model.js"></script>
+<!--<script src="model.js"></script>-->
 <script src="caretaking.js"></script>
 <script src="fish.js"></script>
 <script>
-    document.getElementById("mood").src = moodGifs[moodState];
-    document.getElementById("evolve").src = fishGifs[evolveState];
-    setInterval(evaluate, 1000);
+
+    //Model
+    var sleep = 100;
+    var hunger = 100;
+    var hygiene = 100;
+    var love = 100;
+
+    let experience = 0;
+    let experienceRate = 0.25;
+    let nextLevel = 1000;
+    let evolveState = 0;
+
+    let errorMessage = '';
+
+
+    let moodState = 0;
+
+    let moodImg = 'img/mood/fiskglad1.1(bilde1)mbakgrunn.png';
+
+    const moodGifs = ['img/mood/fiskglad1.1(bilde1)mbakgrunn.png', 
+    'img/mood/fiskmediumglad1(bilde2)mbakgrunn.png',
+    'img/mood/fiskbekymret1(bilde3)mbakgrunn.png',
+    'img/mood/fisk kjempe trist1(bilde5)mbakgrunn.png',
+    'img/mood/fisksint1(bilde6)mbakgrunn.png',
+    'img/mood/fiskdod1(bilde7)alternative.png'];
+
+    let evolveImg = 'img/evolution/fiskevolve1(bilde1)mbakgrunn.png';
+
+    const fishGifs = ['img/evolution/fiskevolve1(bilde1)mbakgrunn.png',
+    'img/evolution/fiskevolve2(bilde2)mbakgrunn.png',
+    'img/evolution/fiskevolve3(bilde3)mbakgrunn.png',
+    'img/evolution/fiskevolve4(bilde4)mbakgrunn.png'];
+
+    let evolveBtnStyle = '';
+    
+    //View
+    
+    view();
+    function view() {
+        let html = /*HTML*/`
+        <h1>Joel the fish</h1>
+        
+        <h3>Mood:</h3>
+
+        <img id="mood" alt="altImage" src="${moodImg}" width="221px" height="306px"/><br><br>
+
+        Sleep: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<progress value="${sleep}" max="100" id="sleep"></progress>
+        <button onclick="changeValue('sleep')">Sleep</button><br/><br>
+
+        Hunger: &nbsp;&nbsp;&nbsp;<progress value="${hunger}" max="100" id="hunger"></progress>
+        <button onclick="changeValue('hunger')">Hunger</button><br/><br>
+
+        Hygiene: &nbsp;<progress value="${hygiene}" max="100" id="hygiene"></progress>
+        <button onclick="changeValue('hygiene')">Hygiene</button><br/><br>
+
+        Love: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<progress value="${love}" max="100" id="love"></progress>
+        <button onclick="changeValue('love')">Love</button><br/><br>
+
+        </div>
+        <br>
+        <h3>Level:</h3>
+        <img id="evolve" src="${evolveImg}" alt="fish">
+        <h2>Experience: ${experience}</span></h2>
+        <br>
+        <button id="evolveknapp" style="${evolveBtnStyle}" onclick="evolve()">Evolve</button>
+        <div id="errorMessage">${errorMessage}</div>`;
+
+        errorMessage == 'Joel har dødd!' ?
+        html += `<div><button onclick="reset()">Start på nytt?</button></div>` : 
+        html += ``;
+
+        document.getElementById("app").innerHTML = html;
+    }
+
+    let decreasing = setInterval(decreaseValues, 1000);
+    let evaluating = setInterval(evaluate, 1000);
 </script>

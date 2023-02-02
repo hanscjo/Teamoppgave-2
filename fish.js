@@ -2,29 +2,24 @@
 //kristian var her
 
 function evolve() {
-    let errorMessage;
-    
-
     if (experience >= nextLevel) {
         errorMessage = '';
         evolveState++ ;
         nextLevel =  nextLevel * 2.5;
-        document.getElementById('evolve').src = fishGifs[evolveState];
-
-
+        evolveImg = fishGifs[evolveState];
+        experienceRate += 0.1;
     }
     else {
         errorMessage = 'Du trenger ' + nextLevel + ' experience for å utvikle fisken.';
     }
-    document.getElementById('errorMessage').innerHTML = errorMessage;
 
     if (evolveState == 3){
-        document.getElementById('evolveknapp').style.visibility = "hidden";
+        evolveBtnStyle = 'visibility: hidden';
     }  
 }
 
 function evaluate() {
-    const avg = (hunger.value + hygiene.value + sleep.value + love.value)/4;
+    const avg = (hunger + hygiene + sleep + love)/4;
     experience += avg * experienceRate;
 
     if (avg > 80) {
@@ -44,8 +39,36 @@ function evaluate() {
     }
     else {
         moodState = 5;
+        clearInterval(decreasing);
+        clearInterval(evaluating);
+        errorMessage = 'Joel har dødd!';
     }
     
-    document.getElementById('mood').src = moodGifs[moodState];
-    document.getElementById('experiencePoints').innerHTML = experience;
+    moodImg = moodGifs[moodState];
+    view(); 
+}
+
+function reset() {
+    sleep = 100;
+    hunger = 100;
+    hygiene = 100;
+    love = 100;
+
+    experience = 0;
+    experienceRate = 0.25;
+    nextLevel = 1000;
+    evolveState = 0;
+
+    errorMessage = '';
+
+
+    moodState = 0;
+
+    evolveBtnStyle = '';
+
+    moodImg = 'img/mood/fiskglad1.1(bilde1)mbakgrunn.png';
+    evolveImg = 'img/evolution/fiskevolve1(bilde1)mbakgrunn.png';
+    decreasing = setInterval(decreaseValues, 1000);
+    evaluating = setInterval(evaluate, 1000);
+    view();
 }
